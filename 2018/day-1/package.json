@@ -1,0 +1,14 @@
+{
+  "name": "11218",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Sessa93",
+  "license": "MIT",
+  "dependencies": {
+    "fs": "^0.0.1-security",
+    "node-fetch": "^2.3.0",
+    "os": "^0.1.1",
+    "path": "^0.12.7",
+    "url": "^0.11.0"
+  }
+}
