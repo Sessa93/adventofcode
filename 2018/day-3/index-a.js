@@ -50,7 +50,6 @@ const getAnswer = () => {
   return Object.values(grid).filter((value) => {
     return value > 1
   }).length
-  console.log(Object.values(grid).filter(v => v > 1).length)
 }
 
 console.log(getAnswer())
