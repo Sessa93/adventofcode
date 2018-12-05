@@ -35,17 +35,11 @@ const getAnswer2 = (input) => {
   let units = {}
 
   REACTING_UNITS.forEach((pair) => {
-    let patternFound = false
     let tmpStr = input[0]
 
-    while (!patternFound) {
-      patternFound = true
-      if (tmpStr.includes(pair[0]) || tmpStr.includes(pair[1])) {
-        tmpStr = tmpStr.replace(pair[0], '')
-        tmpStr = tmpStr.replace(pair[1], '')
-        patternFound = false
-      }
-    }
+    tmpStr = tmpStr.replace(new RegExp(pair[0], 'g'), '')
+    tmpStr = tmpStr.replace(new RegExp(pair[1], 'g'), '')
+
     units[pair] = getAnswer1([tmpStr, '']).length
   });
   return Object.entries(units).reduce((a, b) => a[1] < b[1] ? a : b)[1]
