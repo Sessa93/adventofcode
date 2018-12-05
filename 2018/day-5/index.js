@@ -32,23 +32,24 @@ const getAnswer1 = (input) => {
 }
 
 const getAnswer2 = (input) => {
-  let patternFound = false
   let units = {}
 
   REACTING_UNITS.forEach((pair) => {
+    let patternFound = false
     let tmpStr = input[0]
+
     while (!patternFound) {
       patternFound = true
-      if (tmpStr.includes(pair)) {
-        tmpStr = tmpStr.replace(pair, '')
+      if (tmpStr.includes(pair[0]) || tmpStr.includes(pair[1])) {
+        tmpStr = tmpStr.replace(pair[0], '')
+        tmpStr = tmpStr.replace(pair[1], '')
         patternFound = false
       }
     }
-    units[pair] = tmpStr.length
+    units[pair] = getAnswer1([tmpStr, '']).length
   });
-  console.log(units)
   return Object.entries(units).reduce((a, b) => a[1] < b[1] ? a : b)[1]
 }
 
 console.log('Answer 1: '+getAnswer1(getInput(INPUT_FILE)).length)
-console.log('Answer 2: '+getAnswer2('dabAcCaCBAcCcaDA'))
+console.log('Answer 2: '+getAnswer2(getInput(INPUT_FILE)))
